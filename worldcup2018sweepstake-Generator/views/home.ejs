@@ -1,0 +1,32 @@
+<% include partials/header.ejs %>
+    <title>World Cup Sweepstake - Home</title>
+    </script>
+    </head>
+    <body>
+        <% include partials/navbar.ejs %>
+            <div class='container'>
+                <div style="text-align:center">
+
+                    <h1 class="title">My Sweepstakes</h1>
+                    <% sweepstake.forEach(function(element) { %>
+                        <div class="row">
+                            <div class="col-sm-3" id="picture">
+                                <img class='homeImg' src="https://static.giantbomb.com/uploads/scale_medium/0/4/1409402-world_cup_trophy.jpeg">
+                                <a id="lk" href="/sweepstakes/<%= element._id %>" class="btn btn-primary homeBtn">
+                                    <i class="fas fa-trophy"></i>
+                                    <br>
+                                    <%= element.name %>
+                                </a>
+                            </div>
+                            <% }); %>
+                                <div class="col-sm-3">
+                                    <img class='homeImg' src="https://cdn.pixabay.com/photo/2016/10/10/01/49/plus-1727487__340.png">
+                                    <a id="lk1" href="/sweepstakes/new" class="btn btn-primary homeBtn">
+                                        <i class="fas fa-plus"></i>
+                                        <br> Create New</span>
+                                    </a>
+                                </div>
+                        </div>
+                </div>
+            </div>
+            <% include partials/footer.ejs %>

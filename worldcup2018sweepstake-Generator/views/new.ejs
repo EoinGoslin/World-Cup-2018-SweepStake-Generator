@@ -1,0 +1,46 @@
+<% include partials/header.ejs %>
+    <title>Create New Sweepstake</title>
+    <script src="/js/captureNew.js"></script>
+    </head>
+    <body>
+        <% include partials/navbar.ejs %>
+        <div class='container'>
+            <div style="text-align:center">
+                <h1 class="title">Create New Sweepstake</h1>
+            </div>
+            <!-- <div class="form-group"> -->
+            <div class="form-inline">
+                <form class='form' action="/sweepstakes" method="POST">
+                    <div class="form-row">
+                        <input class="form-control" type="text" name="name" id='sweepstakeName' placeholder="Enter Sweepstake Name">
+                        <div class="col-sm-4">
+                            <select class="form-control" name='numPlayers'  id="numPlayers">
+                            <option disabled selected="selected">Number of Players</option>
+                            <% for(var i = 1; i < 33; i++) { %>
+                            <option>  <%=i%>  </option>
+                            <%}%>
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <select class="form-control" name='numTeamsPerPlayer' id="numTeamsPerPlayer">
+                                    <option disabled selected="selected">Teams per Player</option>
+                                <% for(var i = 1; i < 33; i++) { %>
+                                    <option>  <%=i%>   </option>
+                                    <%}%>
+                            </select>
+                        </div>
+                        <button type='button' class='btn btn-primary' onclick="saveData()">Go</button>
+                    </div>
+                    <div style="text-align: center" id="subBtnArea">
+                        <!-- submit button appended using js -->
+                    </div> 
+                </form>
+                <div class="col-sm-6 scroll-area" id="inSection">
+                    <!-- form inputs appended using js -->
+                </div>
+            </div>
+            <table class="table table-striped" id="displayTable">
+                <!-- table content filled using js -->
+            </table>
+        </div>
+        <% include partials/footer.ejs %>

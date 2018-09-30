@@ -1,0 +1,80 @@
+<% if(currentUser) { %>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">World Cup Sweepstake</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/sweepstakes">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            My Sweepstakes
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <% if(typeof mySweepstakes != "undefined") { %>
+              <% mySweepstakes.forEach(function(element) { %>
+                <a class="dropdown-item" href="/sweepstakes/<%=element._id%>"><%=element.name%></a>
+              <% }); %>
+            <% }; %>
+              <a class="dropdown-item" href="/sweepstakes/new">Create New + </a>
+          </div>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a class="nav-link navbar-right" href="/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- flash message -->
+  <div class='container'>
+      <% if(error && error.length > 0) { %>
+          <div class='alert alert-danger' role='alert'>
+              <%= error %>
+          </div>
+      <% } %>
+      <% if(success && success.length > 0) { %>
+          <div class='alert alert-success' role='alert'>
+              <%= success %>
+          </div>
+      <% } %>
+  </div>
+<% } else { %>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">World Cup Sweepstake</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+              <a class="nav-link navbar-right" href="/register">Sign Up</a>
+          </li>
+          <li>
+              <a class="nav-link navbar-right" href="/login">Login</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+  <!-- flash message -->
+  <div class='container'>
+      <% if(error && error.length > 0) { %>
+          <div class='alert alert-danger' role='alert'>
+              <%= error %>
+          </div>
+      <% } %>
+      <% if(success && success.length > 0) { %>
+          <div class='alert alert-success' role='alert'>
+              <%= success %>
+          </div>
+      <% } %>
+  </div>
+<% }; %>

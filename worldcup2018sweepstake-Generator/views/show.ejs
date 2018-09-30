@@ -1,0 +1,39 @@
+<% include partials/header.ejs %>
+    <title>My Sweepstakes - <%- sweepstake.name %></title>
+    <script>
+            function myFunction() {
+                window.print();
+            }
+            </script>
+    </head>
+    <body>
+        <% include partials/navbar.ejs %>
+        <div class='container'>
+            <div style="text-align:center">
+                <h1 class="title"><%- sweepstake.name %></h1>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="thead-dark ">
+                            <tr>
+                                <th scope="col">Player</th>
+                                <th scope="col">Team</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% sweepstake.players.forEach(function(element) { %>
+                            <tr>
+                                <td><%- element.name %></td>
+                                <% for(var i=0; i<element.flag.length; i++) { %>
+                                    <td><img src="<%= element.flag[i] %>"><%- element.team[i] %></td>
+                                <% } %>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="text-align: left;">
+                        <button onclick="myFunction()" class="Btn Btn-primary">Print Page</button>
+                    </div>
+            </div>
+        </div>
+    <% include partials/footer.ejs %>
